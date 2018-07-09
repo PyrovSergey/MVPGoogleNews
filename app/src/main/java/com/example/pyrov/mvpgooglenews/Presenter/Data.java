@@ -17,6 +17,7 @@ public class Data implements GetDataContract.Data {
     private static final String KEY = "1d48cf2bd8034be59054969db665e62e";
     private static final String PUBLISHED_AT = "publishedAt";
     private static final String RU = "ru";
+    private static final String SUCCESS = "Success";
     private static List<ArticlesItem> itemList;
 
     private GetDataContract.onGetDataListener listener;
@@ -32,11 +33,9 @@ public class Data implements GetDataContract.Data {
             App.getGoogleApi().getData(RU, KEY).enqueue(new Callback<News>() {
                 @Override
                 public void onResponse(Call<News> call, Response<News> response) {
-                    if (response != null) {
-                        itemList.clear();
-                        itemList = response.body().getArticles();
-                    }
-                    listener.onSuccess("Success", itemList);
+                    itemList.clear();
+                    itemList = response.body().getArticles();
+                    listener.onSuccess(SUCCESS, itemList);
                 }
 
                 @Override
@@ -48,11 +47,9 @@ public class Data implements GetDataContract.Data {
             App.getGoogleApi().getRequest(query, PUBLISHED_AT, 100, KEY).enqueue(new Callback<News>() {
                 @Override
                 public void onResponse(Call<News> call, Response<News> response) {
-                    if (response != null) {
-                        itemList.clear();
-                        itemList = response.body().getArticles();
-                    }
-                    listener.onSuccess("Success", itemList);
+                    itemList.clear();
+                    itemList = response.body().getArticles();
+                    listener.onSuccess(SUCCESS, itemList);
                 }
 
                 @Override

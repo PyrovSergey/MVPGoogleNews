@@ -9,5 +9,4 @@ public interface ContractActivity {
 
         void startBrowser(Uri url);
     }
-
 }

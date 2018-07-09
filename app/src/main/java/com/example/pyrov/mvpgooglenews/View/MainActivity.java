@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity implements ContractActivity.
         ButterKnife.bind(this);
 
         presenter = new Presenter(this);
-        presenter.getDataFromURL("");
+        presenter.getDataFromURL(null);
         swipe.setOnRefreshListener(this);
         searchBar.setIconifiedByDefault(true);
         searchBar.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-                presenter.getDataFromURL("");
+                presenter.getDataFromURL(null);
                 return false;
             }
         });
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements ContractActivity.
             @Override
             public boolean onQueryTextChange(String newText) {
                 if (TextUtils.isEmpty(newText)) {
-                    presenter.getDataFromURL("");
+                    presenter.getDataFromURL(null);
                 }
                 return false;
             }
